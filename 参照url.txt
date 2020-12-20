@@ -1,0 +1,28 @@
+参考にしたタイマー
+https://qiita.com/moriwm77/items/5d5430c80cfccd5fb397
+
+子コンポーネントのメソッドを呼び出す
+https://autopp-tech.hatenablog.com/entry/2019/10/03/215141
+
+201216
+スロット開始～全てstop押下後、初期状態戻る
+App
+  slotOn スタートボタンのbool値
+Num
+  c_slotOn ストップボタンのbool値
+
+次
+値が揃っていたら特定の演出
+Numでstop押下後、止まった値を取得
+その値をAppに送る
+end()でその値を貯め、stop全て押下後に比較する
+
+201219
+画像を動的に切り替えることができない問題が解決
+手掛かり：https://qiita.com/coppieee/items/4260bd0af246aebf5557
+publicに画像フォルダを入れる
+array:{
+        a:["/img/kusagame.jpg","/img/ishigame.jpg"],
+        ...
+      },
+次
