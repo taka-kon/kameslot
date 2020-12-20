@@ -1,0 +1,12 @@
+[
+  {"name":"クサガメ","url":"/img/kusagame.jpg"},
+  {"name":"二ホンイシガメ","url":"/img/ishigame.jpg"},
+  {"name":"ミシシッピアカミミガメ","url":"/img/midorigame.jpg"},
+  {"name":"スッポン","url":"/img/suppon.jpg"},
+  {"name":"ミナミイシガメ","url":"/img/minami.jpg"},
+  {"name":"スッポン","url":"img/kiboshi.jpg"},
+  {"name":"ウミガメ","url":"/img/umigame.jpg"},
+  {"name":"セマルハコガメ","url":"/img/semaru.jpg"},
+  {"name":"カブトニオイガメ","url":"/img/kabuto.jpg"},
+  {"name":"スッポンモドキ","url":"/img/supomodo.jpg"}
+]

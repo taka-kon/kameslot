@@ -1,28 +1,31 @@
 <template>
   <div id="app">
     <div class="header">
-      カメ合わせ
+      <h1>カメスロット</h1>
     </div>
-    <Game @turtle="showTurtle"></Game>
+    <Modal :name="turtle"></Modal>
+    <Game @turtle="sendTurtle"></Game>
+    <p>{{turtle}}</p>
   </div>
 </template>
 
 <script>
 import Game from './components/Game.vue'
+import Modal from './components/Modal.vue'
 export default {
   name: 'app',
+  data(){
+    return{
+      turtle:null,
+    }
+  },
   components:{
-    Game
+    Game,
+    Modal
   },
   methods:{
-    showTurtle(hogi){
-      if(hogi==="/img/kusagame.jpg"){
-        window.open( 'https://www.youtube.com/watch?v=QuNiIjKutEA' );
-      }else if(hogi==="/img/ishigame.jpg"){
-        window.open('https://www.youtube.com/watch?v=IBAvGXZ7OvM');
-      }else if(hogi==="/img/kabuto.jpg"){
-        window.open('https://www.youtube.com/watch?v=2ejdGwdFsB0');
-      }
+    sendTurtle(hogi){
+      this.turtle=hogi;
     }
   }
  

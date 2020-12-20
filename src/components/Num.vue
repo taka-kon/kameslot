@@ -1,11 +1,12 @@
 <template>
    <div class="block">
       <div class="image">
-        <img class="slot_img" :src="type" alt="" />
+        <img class="slot_img" :src="type.url" alt="" />
       </div>
       <!-- 押すとstartメソッドが起動 -->
       <button class="stop_btn"  v-on:click="stop" v-if="c_slotOn">Stop</button>
       <button class="stop_btn" v-on:click="stop" v-if="!c_slotOn" disabled>Stop</button>
+      <p>{{type}}</p>
     </div>
 </template>
 

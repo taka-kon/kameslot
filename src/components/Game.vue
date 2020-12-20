@@ -2,15 +2,16 @@
   <div id="slot">
     <div class="slot-num">
       <!-- スロットを回す速度や配列変数を入れる -->
-      <Num @end="end" ref="num_start1" :speed="800" :array="array.a" ></Num>
-      <Num @end="end" ref="num_start2" :speed="800" :array="array.b" ></Num>
-      <Num @end="end" ref="num_start3" :speed="800" :array="array.c" ></Num>
+      <Num @end="end" ref="num_start1" :speed="2000" :array="turtles" ></Num>
+      <Num @end="end" ref="num_start2" :speed="1000" :array="turtles" ></Num>
+      <Num @end="end" ref="num_start3" :speed="2000" :array="turtles" ></Num>
     </div>
     <!-- ↓ボタン押下で子のstartメソッドが起動 -->
     <button class="start_btn" v-on:click="start" v-if="!slotOn">S t a r t</button>
     <button class="start_btn" v-on:click="start" v-if="slotOn" disabled>S t a r t</button>
     <p v-if="hit===true">当たり！</p>
     <p v-else-if="hit===false && slotEnd===3">残念</p>
+    <!-- <p>{{result}}</p> -->
   </div>
 </template>
 
@@ -18,6 +19,7 @@
 
 <script>
 import Num from './Num.vue'
+import turtles from '../assets/turtle.json'
 export default {
   name: 'game',
   components:{
@@ -25,14 +27,9 @@ export default {
   },
   data() {
     return {
-      img:[
-        "/img/kusagame.jpg","/img/ishigame.jpg","/img/midorigame.jpg","/img/suppon.jpg","/img/minami.jpg","/img/kiboshi.jpg","/img/umigame.jpg","/img/semaru.jpg","/img/kabuto.jpg","/img/supomodo.jpg"
+      turtles:turtles,
+      info:[
       ],
-      array:{
-        a:["/img/kusagame.jpg","/img/ishigame.jpg","/img/midorigame.jpg","/img/suppon.jpg","/img/minami.jpg","/img/kiboshi.jpg","/img/umigame.jpg","/img/semaru.jpg","/img/kabuto.jpg","/img/supomodo.jpg"],
-        b:["/img/kusagame.jpg","/img/ishigame.jpg","/img/midorigame.jpg","/img/suppon.jpg","/img/minami.jpg","/img/kiboshi.jpg","/img/umigame.jpg","/img/semaru.jpg","/img/kabuto.jpg","/img/supomodo.jpg"],
-        c:["/img/kusagame.jpg","/img/ishigame.jpg","/img/midorigame.jpg","/img/suppon.jpg","/img/minami.jpg","/img/kiboshi.jpg","/img/umigame.jpg","/img/semaru.jpg","/img/kabuto.jpg","/img/supomodo.jpg"]
-      },
       slotOn:false,
       slotEnd:0, //Numのスロットのstop()が起動したときに1追加。3になった時、slotOnをfalseにし、0にリセット
       result:[],
