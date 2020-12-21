@@ -71,7 +71,6 @@ export default {
           this.hit=true;
           //揃った画像パスを親のAppに送る
           this.$emit("turtle",hogi);
-          // window.open( 'https://www.google.com/search?q=%E3%82%AB%E3%83%94%E3%83%90%E3%83%A9&oq=%E3%82%AB%E3%83%94%E3%83%90%E3%83%A9&aqs=chrome..69i57j69i59j35i39j0i395i433j0i131i395i433j69i60l2j69i61.13008j1j7&sourceid=chrome&ie=UTF-8' );
           
         }
         this.slotOn=false;

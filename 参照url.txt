@@ -26,3 +26,52 @@ array:{
         ...
       },
 次
+ModalコンポーネントのshowTurtleに.nameなど入れるとモーダルを閉じれなくなる。またフェードで表示するところがフェードでなくなっている
+
+201219　月
+showTurtleに.urlや.nameを付けると次のようなエラー
+    Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "showTurtle"
+
+    参照：https://kic-yuuki.hatenablog.com/entry/2019/01/05/144610
+    お
+親から子にデータバイディングさせるためにプロパティを変更してはならない。
+下記のように書く。
+export default {
+  props: {
+    propsValue: Number
+  },
+  data() {
+    // プロパティの値を設定
+    dataValue: this.propsValue
+  },
+  methods: {
+    editValue() {
+      // データに定義した値を変更
+      this.dataValue = 20
+    }
+}
+
+
+<p>{{turtle.name}}</p> としたときに
+TypeError: Cannot read property 'name' of null
+と出る
+原因：turtle.nameを表示しようとした時点でまだサーバが
+データを取得できておらず、null。その後取得しデータに反映。
+<p v-if="turtle">{{turtle.name}}</p>
+とv-ifを加えればOK
+参照：https://t-salad.com/%E3%80%90vue-js%E3%80%91%E8%A6%8B%E3%81%9F%E7%9B%AE%E3%81%AF%E6%AD%A3%E5%B8%B8%E3%81%AA%E3%81%AE%E3%81%AB%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%8C%E5%87%BA%E3%82%8B/
+
+・Modalコンポーネントにおいて常にshowModal()が起動している状態
+モーダル表示できるが消せない
+・<p v-if="turtle">{{showModal()}}</p>のように条件付きでshowModal()を起動
+表示されていれば消すことできる　が、そもそもモーダル表示しない　
+showModal()はモーダルを表示させるメソッド
+showModal(){
+      this.turtle=this.showTurtle;
+      if(this.turtle!=null){
+        this.isShow=true;
+      }
+    },
+    ということは、turtleに常にオブジェクトが代入され続けているということ
+    isShowに常にtrueが代入され続けているということ
+    どういうときにshowModal()を起動させないか＝

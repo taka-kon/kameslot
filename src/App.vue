@@ -3,9 +3,9 @@
     <div class="header">
       <h1>カメスロット</h1>
     </div>
-    <Modal :name="turtle"></Modal>
+    <Modal :showTurtle="turtle" ></Modal>
     <Game @turtle="sendTurtle"></Game>
-    <p>{{turtle}}</p>
+    <!-- <p>{{turtle}}</p> -->
   </div>
 </template>
 
@@ -26,6 +26,9 @@ export default {
   methods:{
     sendTurtle(hogi){
       this.turtle=hogi;
+    },
+    doNull(){
+      
     }
   }
  

@@ -5,19 +5,13 @@
       <div class="close-btn" id="js-close-btn" @click="closePopUp" >
         <i class="fas fa-times"></i>
       </div>
-        <img :src="showTurtle" alt="ポップアップ画像">
-        <h2>二ホンイシガメ</h2>
-        <p>{{}}</p>
+        <img v-if="turtle" :src="turtle.url" alt="ポップアップ画像">
+        <h2 v-if="turtle">{{turtle.name}}</h2>
       
     </div>
     <div class="black-background" id="js-black-bg"  @click="closePopUp"></div>
   </div>
     <p>{{showModal()}}</p>
-    <!-- showTurtleに.urlや.nameを付けるとモーダルが消えなくなる
-    Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "showTurtle"
-     -->
-
-  <!-- <button id="js-show-popup" @click="popImage">Show Popup</button> -->
 </div>
 </template>
 
@@ -25,29 +19,30 @@
 export default {
   name: 'modal',
   props:{
-    name:String,
+    showTurtle:Object,
   },
   data(){
     return{
-      show:false, //trueのときモーダル表示
       isShow:false,  //trueのときHTML側で設定されたクラス名is-showが付与
+      turtle:"",
     }
   },
   methods:{
     showModal(){
-      if(this.showTurtle!=null){
-        this.popImage(this.showTurtle);
+      this.turtle=this.showTurtle;
+      if(this.turtle!=null){
+        this.isShow=true;
       }
-    },
-    popImage(){
-      this.isShow=true;
-
     },
     closePopUp(){
       this.isShow=false;
-      this.showTurtle=null;
+      this.turtle=null;
     }
+  },
+  computed:{
+    
   }
+  
  
   
 }
